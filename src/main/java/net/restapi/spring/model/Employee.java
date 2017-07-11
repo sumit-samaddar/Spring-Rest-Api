@@ -1,8 +1,15 @@
 package net.restapi.spring.model;
 
+import java.io.Serializable;
 import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-public class Employee {
+/**
+ * @author Sumit
+ *
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Employee implements Serializable {
 
 	private Long id;
 	private String firstName;
@@ -11,54 +18,13 @@ public class Employee {
 	private String mobile;
 	private Date dateOfBirth;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
+	/**
+	 * @param id
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @param mobile
+	 */
 	public Employee(long id, String firstName, String lastName, String email, String mobile) {
 		this.id = id;
 		this.firstName = firstName;
@@ -68,9 +34,93 @@ public class Employee {
 		this.dateOfBirth = new Date();
 	}
 
+	/**
+	 * 
+	 */
 	public Employee() {
 	}
 
-	// ..Getter and setter methods
+	/**
+	 * @return
+	 */
+	public Long getId() {
+		return id;
+	}
 
+	/**
+	 * @param id
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
+
+	/**
+	 * @param firstName
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+
+	/**
+	 * @param lastName
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getMobile() {
+		return mobile;
+	}
+
+	/**
+	 * @param mobile
+	 */
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	/**
+	 * @return
+	 */
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	/**
+	 * @param dateOfBirth
+	 */
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
 }

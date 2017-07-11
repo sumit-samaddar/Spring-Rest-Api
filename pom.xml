@@ -14,6 +14,7 @@
 		<jackson.version>2.7.5</jackson.version>
 	</properties>
 
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>

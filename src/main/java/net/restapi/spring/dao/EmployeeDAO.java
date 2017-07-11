@@ -7,13 +7,18 @@ import org.springframework.stereotype.Component;
 
 import net.restapi.spring.model.Employee;
 
+/**
+ * @author Sumit
+ *
+ */
 @Component
 public class EmployeeDAO {
 
 	// Dummy database. Initialize with some dummy values.
-	private static List employees;
+	private static List<Employee> employees;
+
 	{
-		employees = new ArrayList();
+		employees = new ArrayList<Employee>();
 		employees.add(new Employee(101, "John", "Doe", "djohn@gmail.com", "121-232-3435"));
 		employees.add(new Employee(201, "Russ", "Smith", "sruss@gmail.com", "343-545-2345"));
 		employees.add(new Employee(301, "Kate", "Williams", "kwilliams@gmail.com", "876-237-2987"));
@@ -24,7 +29,7 @@ public class EmployeeDAO {
 	 * 
 	 * @return list of employees
 	 */
-	public List list() {
+	public List<Employee> list() {
 		return employees;
 	}
 
