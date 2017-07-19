@@ -2,26 +2,36 @@ package net.restapi.spring.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * @author Sumit
  *
  */
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Employee implements Serializable {
+@XmlRootElement(name="user")
+@XmlAccessorType(XmlAccessType.NONE)
+public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@XmlAttribute
 	private Long id;
+	@XmlAttribute
 	private String firstName;
+	@XmlAttribute
 	private String lastName;
+	@XmlAttribute
 	private String email;
+	@XmlAttribute
 	private String mobile;
+	@XmlAttribute
 	private Date dateOfBirth;
 
-	public Employee(long id, String firstName, String lastName, String email, String mobile) {
+	public User(long id, String firstName, String lastName, String email, String mobile) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -30,7 +40,7 @@ public class Employee implements Serializable {
 		this.dateOfBirth = new Date();
 	}
 
-	public Employee() {
+	public User() {
 	}
 
 	public Long getId() {

@@ -2,8 +2,11 @@ package net.restapi.spring.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,43 +32,49 @@ public class EmployeeRestController {
 	@Autowired
 	private EmployeeDAO employeeDAO;
 	
+	private static final Logger logger = LoggerFactory.getLogger(EmployeeRestController.class);
+	
 	/**
 	 * @return
 	 */
-	@GetMapping("/employees")
-	public List getemployees() {
-		return employeeDAO.list();
+	@RequestMapping(value = "/employees", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<List<Employee>> getemployees() {
+		logger.debug("welcome() is executed, value {}", "mkyong");
+
+		logger.error("This is Error message", new Exception("Testing"));
+		
+		return new ResponseEntity<List<Employee>>(employeeDAO.list(),HttpStatus.OK);
 	}
 
 	/**
 	 * @param id
 	 * @return
 	 */
-	@GetMapping("/employees/{id}")
-	public ResponseEntity getemployee(@PathVariable("id") Long id) {
+	@RequestMapping(value = "/employees/{id}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<Employee> getemployee(@PathVariable("id") Long id) {
 		Employee employee = employeeDAO.get(id);
 		if (employee == null) {
-			return new ResponseEntity("No employee found for ID " + id, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity(employee, HttpStatus.OK);
+		return new ResponseEntity<Employee>(employee, HttpStatus.OK);
 	}
 
 	/**
 	 * @param employee
 	 * @return
 	 */
-	@PostMapping(value = "/employees")
-	public ResponseEntity createemployee(@RequestBody Employee employee) {
+	@RequestMapping(value = "/employees", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<Employee> createemployee(@RequestBody Employee employee) {
 		employeeDAO.create(employee);
-		return new ResponseEntity(employee, HttpStatus.OK);
+		return new ResponseEntity<Employee>(employee, HttpStatus.OK);
 	}
 
 	/**
 	 * @param id
 	 * @return
 	 */
-	@DeleteMapping("/employees/{id}")
-	public ResponseEntity deleteemployee(@PathVariable Long id) {
+	@RequestMapping(value = "/employees/{id}", method=RequestMethod.DELETE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity deleteemployee(@PathVariable Long id) {
 		if (null == employeeDAO.delete(id)) {
 			return new ResponseEntity("No employee found for ID " + id, HttpStatus.NOT_FOUND);
 		}
@@ -77,8 +86,8 @@ public class EmployeeRestController {
 	 * @param employee
 	 * @return
 	 */
-	@PutMapping("/employes/{id}")
-	public ResponseEntity updateemployee(@PathVariable Long id, @RequestBody Employee employee) {
+	@RequestMapping(value = "/employees/{id}", method=RequestMethod.PUT, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity updateemployee(@PathVariable Long id, @RequestBody Employee employee) {
 		employee = employeeDAO.update(id, employee);
 		if (null == employee) {
 			return new ResponseEntity("No employee found for ID " + id, HttpStatus.NOT_FOUND);
