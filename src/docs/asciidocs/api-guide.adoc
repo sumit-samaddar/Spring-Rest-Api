@@ -1,0 +1,88 @@
+= Employee REST Service API Guide
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+= Resources
+
+== Employee REST Service
+
+The Employee provides the entry point into the service.
+
+=== Accessing All Employees
+
+==== Request structure
+
+include::{snippets}/employee-controller-test/get-employees/http-request.adoc[]
+
+==== Response fields
+
+include::{snippets}/employee-controller-test/get-employees/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/employee-controller-test/get-employees/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/employee-controller-test/get-employees/curl-request.adoc[]
+
+=== Accessing Employee by id
+
+==== Request structure
+
+include::{snippets}/employee-controller-test/get-employee/http-request.adoc[]
+
+==== Response fields
+
+include::{snippets}/employee-controller-test/get-employee/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/employee-controller-test/get-employee/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/employee-controller-test/get-employee/curl-request.adoc[]
+
+=== Create Employee
+
+==== Request structure
+
+include::{snippets}/employee-controller-test/post-employee/http-request.adoc[]
+
+==== Response fields
+
+include::{snippets}/employee-controller-test/post-employee/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/employee-controller-test/post-employee/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/employee-controller-test/post-employee/curl-request.adoc[]
+
+=== Update Employee
+
+==== Request structure
+
+include::{snippets}/employee-controller-test/put-employee/http-request.adoc[]
+
+==== Response fields
+
+include::{snippets}/employee-controller-test/put-employee/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/employee-controller-test/put-employee/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/employee-controller-test/put-employee/curl-request.adoc[]
+
+
+

@@ -3,13 +3,12 @@ package net.restapi.spring.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import net.restapi.spring.dao.UserDAO;
 import net.restapi.spring.model.User;
@@ -27,7 +26,8 @@ public class UserRestController {
 	/**
 	 * @return
 	 */
-	@GetMapping("/users")
+	//@GetMapping("/users")
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getusers() {
 		return new ResponseEntity<List<User>>(userDAO.list(), HttpStatus.OK);
 	}
@@ -36,7 +36,8 @@ public class UserRestController {
 	 * @param id
 	 * @return
 	 */
-	@GetMapping("/users/{id}")
+	//@GetMapping("/users/{id}")
+	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> getuser(@PathVariable("id") Long id) {
 		User User = userDAO.get(id);
 		if (User == null) {
@@ -49,7 +50,8 @@ public class UserRestController {
 	 * @param User
 	 * @return
 	 */
-	@PostMapping(value = "/users")
+	//@PostMapping(value = "/users")
+	@RequestMapping(value = "/users", method = RequestMethod.POST)
 	public ResponseEntity<User> createuser(@RequestBody User User) {
 		userDAO.create(User);
 		return new ResponseEntity<User>(User, HttpStatus.OK);
@@ -59,7 +61,8 @@ public class UserRestController {
 	 * @param id
 	 * @return
 	 */
-	@DeleteMapping("/users/{id}")
+	//@DeleteMapping("/users/{id}")
+	@RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity deleteuser(@PathVariable Long id) {
 		if (null == userDAO.delete(id)) {
 			return new ResponseEntity("No User found for ID " + id, HttpStatus.NOT_FOUND);
@@ -72,7 +75,8 @@ public class UserRestController {
 	 * @param User
 	 * @return
 	 */
-	@PutMapping("/users/{id}")
+	//@PutMapping("/users/{id}")
+	@RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
 	public ResponseEntity updateuser(@PathVariable Long id, @RequestBody User User) {
 		User = userDAO.update(id, User);
 		if (null == User) {

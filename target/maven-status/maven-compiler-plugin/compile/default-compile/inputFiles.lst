@@ -1,5 +1,9 @@
 E:\java-app\RestApi\src\main\java\net\restapi\spring\model\Employee.java
 E:\java-app\RestApi\src\main\java\net\restapi\spring\config\AppConfig.java
 E:\java-app\RestApi\src\main\java\net\restapi\spring\config\AppInitializer.java
+E:\java-app\RestApi\src\main\java\net\restapi\spring\model\User.java
+E:\java-app\RestApi\src\main\java\net\restapi\spring\controller\UserRestController.java
+E:\java-app\RestApi\src\main\java\net\restapi\spring\dao\UserDAO.java
+E:\java-app\RestApi\src\main\java\net\restapi\spring\config\Application.java
 E:\java-app\RestApi\src\main\java\net\restapi\spring\dao\EmployeeDAO.java
 E:\java-app\RestApi\src\main\java\net\restapi\spring\controller\EmployeeRestController.java

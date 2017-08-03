@@ -2,6 +2,8 @@ package net.restapi.spring.model;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -19,6 +21,7 @@ public class Employee implements Serializable {
 	private String lastName;
 	private String email;
 	private String mobile;
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date dateOfBirth;
 
 	public Employee(long id, String firstName, String lastName, String email, String mobile) {
@@ -28,6 +31,15 @@ public class Employee implements Serializable {
 		this.email = email;
 		this.mobile = mobile;
 		this.dateOfBirth = new Date();
+	}
+	
+	public Employee(long id, String firstName, String lastName, String email, String mobile, Date dt) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobile = mobile;
+		this.dateOfBirth = dt;
 	}
 
 	public Employee() {

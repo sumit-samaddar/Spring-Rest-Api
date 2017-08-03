@@ -62,7 +62,7 @@ public class EmployeeDAO {
 	 * @return customer object with updated id
 	 */
 	public Employee create(Employee employee) {
-		employee.setId(System.currentTimeMillis());
+		employee.setId(employee.getId());
 		employees.add(employee);
 		return employee;
 	}
